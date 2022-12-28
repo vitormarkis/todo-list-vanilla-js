@@ -1,0 +1,61 @@
+.bg-dark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 20px);
+    height: 100vh;
+    background-color: #00000080;
+    z-index: 5;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-div-info.hide,
+.todo-div-info.inp.hide,
+.hide {
+    display: none;
+}
+
+#modal-info {
+    width: 75%;
+}
+
+#modal-info * {
+    color: white;
+}
+
+#modal-info p {
+    cursor: pointer;
+}
+
+#modal-info > div:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+#modal-info,
+.todo-div-info
+{
+    display: flex;
+    flex-flow: column;
+    padding: 10px 10px;
+    transition: all 150ms;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #222;
+}
+
+.todo-div-info textarea {
+    background-color: unset;
+    width: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.todo-div-info textarea::-webkit-scrollbar{
+    width: 0;
+}

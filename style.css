@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mg-bt-xs {margin-bottom: 10px}
+.mg-bt-s {margin-bottom: 20px}
+.mg-bt-xm {margin-bottom: 30px}
+.lh1 {line-height: 1;}
+
+body {
+    height: 100vh;
+    background-color: #222;
+}
+
+h1 {
+    font-family: 'Poppins';
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: sticky;
+    background-image: linear-gradient(to right, #3fb7e2, #37b0dd);
+    box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.225)
+}
+
+header * {
+    color: #fff;
+}
+
+p, button, span, input {
+    font-size: 14px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#todo {
+    flex-grow: 1;
+    background-color: #222;
+    padding: 20px;
+    min-width: 300px;
+    max-width: 800px;
+}
+
+#todo > *,
+#modal-info > * 
+{
+    color: #fff;
+}
+
+#input-div {
+    padding: .5rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #3a3a3a;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+#input-div input {
+    padding: 2px 5px;
+    outline: none;
+    border: none;
+    font-size: .7rem;
+    width: 70%;
+}
+
+#input-div button {
+    background-color: #3fb7e2;
+}
+
+#todo-all-items-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#todo-all-items-div .todo-item-div {
+    margin-block: 8px;
+}
+
+.todo-item-div {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 10px;
+    transition: all 150ms;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #222;
+}
+
+.todo-item-div:hover {
+    background-color: #303030;
+}
+
+.span-todo-item {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.info-btns-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    border: none;
+    padding: 2px 5px;
+    outline: none;
+}
+
+button {
+    color: white;
+    background-color: #888;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btns-todo-item > button:nth-of-type(1) {background-color: hsl(200, 62%, 48%)}
+.btns-todo-item > button:nth-of-type(2) {background-color: hsl(220, 62%, 48%)}
+.btns-todo-item > button:nth-of-type(3) {background-color: hsl(240, 62%, 48%)}
+.btns-todo-item > button:nth-of-type(4) {background-color: hsl(255, 62%, 48%)}
+
+.bg-green {background-color: #39b7e4;}
+
+.item-completed {
+    background-color: hsl(196, 100%, 20%);
+    text-decoration: dashed;
+}
+
+.item-completed:hover {
+    background-color: hsl(196, 100%, 23%);
+}
+
+.btns-todo-item {
+    display: flex;
+    gap: 10px;
+}
+
+.item-completed .span-todo-item span {
+    transition: all 2s;
+    text-decoration: line-through;
+    font-style: italic;
+    color: #ffffff;
+}
+
+.item-completed .btns-todo-item button {
+    background-color: #2d97bd;
+}
+
+.pulse {
+    animation-name: pulsar;
+    animation-duration: 450ms;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transition: all;
+}
+
+.pulse span {
+    color: #fff;
+}
+
+@keyframes pulsar {
+    0% {
+        background-color: hsl(120, 52%, 60%);
+    }
+    100% {
+        background-color: hsl(90, 52%, 60%);
+    }
+}
