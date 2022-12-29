@@ -32,27 +32,47 @@ export const action = {
         removeItem(id)
         refresh()
     },
-    details: id => {
+    see_details: id => {
+        let db_client = getDatabase()
         SEEING_ID = id
         toggleModal()
+        renderDetailsFields(id, db_client)
+    },
+    save_details: () => {
+        if(!SEEING_ID) return
         let db_client = getDatabase()
-        let $todo_item_div = assignTodoElements(id)[0]
-        let details = document.querySelector('.todo-div-info > p')
-        $todo_item_div.classList.add('pulse')
-        todo_detail_span.appendChild($todo_item_div)
 
-            if(db_client[id].details === '') {
-                details.innerText = 'Escreva uma explicação sobre...'
-            } else {
-                details.innerText = db_client[id].details
-            }
+        updateDetails(db_client)
+
+        toggleModal()
+        refresh()
     },
 }
 
-const updateDetails = () => {
+function renderDetailsFields(id, db_client) {
+    let $todo_item_div = assignTodoElements(SEEING_ID)[0]
+    let details = document.querySelector('.todo-div-info > p')
+    $todo_item_div.classList.add('pulse')
+    todo_detail_span.appendChild($todo_item_div)
+
+    if(db_client[id].details === '') {
+        details.innerText = 'Escreva uma explicação sobre...'
+    } else {
+        details.innerText = db_client[id].details
+    }
+}
+
+const updateDetails = db_client => registerNewTextInDatabase(SEEING_ID, db_client)
+
+export async function buttonAction(e) {
     let db_client = getDatabase()
-    registerNewTextInDatabase(SEEING_ID, db_client)
-    refresh()
+    let resp = await digActionId(e)
+    let [acao, id, item] = resp
+
+    
+    if(!action?.[acao]) return
+
+    action[acao](id, db_client, item)
 }
 
 export function buttonSaveUpdate() {
@@ -61,10 +81,12 @@ export function buttonSaveUpdate() {
         if(!inp_action.value) return
         registerItem(newValue(new_value))
     } else {
-            updateItem(newValue(new_value, editing_id),editing_id)
+        updateItem(newValue(new_value, editing_id),editing_id)
     }
     refresh()
 }
+
+// ===============================================
 
 function updateInput(item) {
     if(!STATE_EDITING) return
@@ -85,16 +107,6 @@ export function pathToggleModal(e) {
 export function detailsEditModal() {
     let db_client = getDatabase()
     toggleDetailsInput(db_client[SEEING_ID].details)
-}
-
-export async function buttonAction(e) {
-    let db_client = getDatabase()
-    let resp = await digActionId(e)
-    let [acao, id, item] = resp
-    
-    if(!action?.[acao]) return
-
-    action[acao](id, db_client, item)
 }
 
 export async function textareaAutoHeight(e) {

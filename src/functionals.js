@@ -33,7 +33,6 @@ export function resetDetailsModal() {
 
 export function clearInput () { 
     inp_action.value = '' 
-    console.log('limpando input')
 }
 
 export function pulseToggle(element) {

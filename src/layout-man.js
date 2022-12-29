@@ -36,7 +36,7 @@ export function assignTodoElements(idx) {
     $todo_item_div.querySelector('.span-todo-item > span').innerText = item.name
 
     let btns = Array.from($btns_todo_item.querySelectorAll('button')) // Array
-    btns[0].setAttribute('data-id', `details-${idx}`)
+    btns[0].setAttribute('data-id', `see_details-${idx}`)
     btns[1].setAttribute('data-id', `conclude-${idx}`)
     btns[2].setAttribute('data-id', `edit-${idx}`)
     btns[3].setAttribute('data-id', `remove-${idx}`)
