@@ -39,13 +39,33 @@ export function pulseToggle(element) {
     element.closest('.todo-item-div').classList.toggle('pulse')
 }
 
-export function digActionId(e) {
-    return e.composedPath().reduce((acc, item) => {
-         let [action, id] = item.getAttribute?.('data-id')?.split('-') || ''
-         if(action) {
-             acc = [...acc,...[action, id]]
-             acc.push(item)    
-         }
-         return acc
-     },[])
+export const digID = {
+    BUTTON: array => {
+        return array.reduce((acc, item) => {
+            let [action, id] = item.getAttribute?.('data-id')?.split('-') || ''
+            if(action) {
+                acc = [...acc,...[action, id]]
+                acc.push(item)    
+            }
+            return acc
+        },[])
+    },
+    DIV: function(array, e) {
+        return find.button(e).reduce((acc,item) => {
+            let [act, id] = item.getAttribute?.('data-id')?.split('-') || ''
+            if(act === 'see_details') {
+                acc = [...acc, ...[act, id]]
+                acc.push(item)
+            }
+            return acc
+        },[])
+    },
+}
+
+export const find = {
+    button: e => {
+        const btns_group_div = e.target.closest('.todo-item-div').querySelector('.btns-todo-item')
+        const btns_group = Array.from(btns_group_div.querySelectorAll('button'))
+        return btns_group
+    }
 }

@@ -1,4 +1,4 @@
-import { digActionId, pulseToggle, toggleDetailsInput, toggleModal } from "./functionals.js"
+import { digID, pulseToggle, toggleDetailsInput, toggleModal } from "./functionals.js"
 import { refresh } from "./init.js"
 import { checkLanguage } from "./language.js"
 import { assignTodoElements } from "./layout-man.js"
@@ -64,11 +64,14 @@ function renderDetailsFields(id, db_client) {
 const updateDetails = db_client => registerNewTextInDatabase(SEEING_ID, db_client)
 
 export async function buttonAction(e) {
+    if(!(e.path.some(ele => ele.id === 'todo-all-items-div'))) return
     let db_client = getDatabase()
-    let resp = await digActionId(e)
-    let [acao, id, item] = resp
-
+    let nodeName = e.target.nodeName
     
+    let resp = async () => await digID[nodeName](e.composedPath(), e)
+
+    let [acao, id, item] = await resp()
+
     if(!action?.[acao]) return
 
     action[acao](id, db_client, item)
@@ -114,4 +117,5 @@ export async function textareaAutoHeight(e) {
     details_textarea.style.height = `${a}px`
 }
 
-
+export async function openDetailsByName(e) {
+}

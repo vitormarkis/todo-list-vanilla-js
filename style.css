@@ -101,12 +101,19 @@ main {
     padding: 5px 0;
     background-color: #222;
     border-bottom: 1px solid #fff;
+    cursor: pointer;
+    user-select: none;
 }
 
 .span-todo-item {
     flex-grow: 1;
     display: flex;
     align-items: center;
+}
+
+.span-todo-item span {
+    cursor: inherit;
+    pointer-events: none;
 }
 
 .info-btns-div {
