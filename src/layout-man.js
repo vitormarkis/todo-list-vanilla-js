@@ -1,6 +1,8 @@
 import { all_items_body } from "./local-variables.js"
 
 function createTodoElements() {
+    let $todo_item_div_container = document.createElement('div')
+    $todo_item_div_container.classList.add('todo-item-div-container')
     let $todo_item_div = document.createElement('div')
     $todo_item_div.classList.add('todo-item-div')
 
@@ -24,13 +26,13 @@ function createTodoElements() {
     $span_todo_item.appendChild(span)
     $todo_item_div.appendChild($span_todo_item)
 
-    return [$todo_item_div,  $btns_todo_item]
+    return [$todo_item_div,  $btns_todo_item, $todo_item_div_container]
 }
 
 export function assignTodoElements(idx) {
     let db_client = getDatabase()
     let item = db_client[idx]
-    let [$todo_item_div,  $btns_todo_item] = createTodoElements()
+    let [$todo_item_div,  $btns_todo_item, $todo_item_div_container] = createTodoElements()
     // console.log($btns_todo_item)
 
     $todo_item_div.querySelector('.span-todo-item > span').innerText = item.name
@@ -43,17 +45,18 @@ export function assignTodoElements(idx) {
 
     if(!item.active) $todo_item_div.classList.add('item-completed')
     
-    return [$todo_item_div, $btns_todo_item]
+    return [$todo_item_div, $btns_todo_item, $todo_item_div_container]
 }
 
 function printTodoElement(idx) {
-    let [$todo_item_div, $btns_todo_item] = assignTodoElements(idx)
+    let [$todo_item_div, $btns_todo_item, $todo_item_div_container] = assignTodoElements(idx)
     // console.log('$todo_item_div')
     // console.log($todo_item_div)
     // console.log('$btns_todo_item')
     // console.log($btns_todo_item)
     $todo_item_div.appendChild($btns_todo_item)
-    all_items_body.appendChild($todo_item_div)
+    $todo_item_div_container.appendChild($todo_item_div)
+    all_items_body.appendChild($todo_item_div_container)
 }
 
 export function printAllTodoElements() {

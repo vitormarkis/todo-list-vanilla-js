@@ -32,8 +32,7 @@ export const action = {
         removeItem(id)
         refresh()
     },
-    see_details: id => {
-        let db_client = getDatabase()
+    see_details: (id, db_client) => {
         SEEING_ID = id
         toggleModal()
         renderDetailsFields(id, db_client)

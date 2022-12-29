@@ -85,22 +85,22 @@ main {
     flex-direction: column;
 }
 
-#todo-all-items-div .todo-item-div {
-    margin-block: 8px;
-}
-
 .todo-item-div {
     display: flex;
     justify-content: space-around;
-    padding: 10px 10px;
+    padding: 5px 5px;
     transition: all 150ms;
     border-radius: 10px;
-    border: 1px solid #444;
-    background-color: #222;
 }
 
 .todo-item-div:hover {
     background-color: #303030;
+}
+
+.todo-item-div-container {
+    padding: 5px 0;
+    background-color: #222;
+    border-bottom: 1px solid #fff;
 }
 
 .span-todo-item {
@@ -157,6 +157,10 @@ button {
 
 .item-completed .btns-todo-item button {
     background-color: #2d97bd;
+}
+
+.todo-item-div-container {
+
 }
 
 .pulse {
