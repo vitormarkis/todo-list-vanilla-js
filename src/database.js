@@ -42,7 +42,9 @@ function updateItem(item, i) {
     setDatabase(db_client)
 }
 
-    // 
+
+
+
 
 // Retorna um objeto novo, com informações do DOM. Se o ID não for passado, ele define o 'active' como true
 // Essa função é chamada no botão de salvar, serve tanto para salvar novo item, como para salvar alterações nesse item, por isso o ID dinâmico

@@ -16,7 +16,7 @@ export function toggleDetailsInput(str) {
     details_text.classList.toggle('hide')
 }
 
-export function cleanItems() {
+export function clearItems() {
     all_items_body.innerHTML = ''
 }
 
@@ -31,7 +31,10 @@ export function resetDetailsModal() {
     details_text.classList.remove?.('hide')
 }
 
-export function cleanInput () { inp_action.value = '' }
+export function clearInput () { 
+    inp_action.value = '' 
+    console.log('limpando input')
+}
 
 export function pulseToggle(element) {
     element.closest('.todo-item-div').classList.toggle('pulse')

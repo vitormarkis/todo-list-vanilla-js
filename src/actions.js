@@ -60,9 +60,9 @@ export function buttonSaveUpdate() {
     if(!STATE_EDITING) {
         if(!inp_action.value) return
         registerItem(newValue(new_value))
-        return
+    } else {
+            updateItem(newValue(new_value, editing_id),editing_id)
     }
-    updateItem(newValue(new_value, editing_id),editing_id)
     refresh()
 }
 
